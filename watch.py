@@ -290,7 +290,7 @@ def poll(cfg, state, dry=False):
     if hb.get("enabled"):
         now = datetime.now()
         today = now.strftime("%Y-%m-%d")
-        due = now.hour == int(hb.get("hour", 9)) and state.get("last_heartbeat") != today
+        due = now.hour >= int(hb.get("hour", 9)) and state.get("last_heartbeat") != today
         if due or not state.get("last_heartbeat"):
             notify(
                 cfg,
