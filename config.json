@@ -1,0 +1,240 @@
+{
+  "telegram": {
+    "bot_token": "",
+    "chat_id": ""
+  },
+  "pushplus": {
+    "token": "",
+    "enabled": true
+  },
+  "poll_seconds": 60,
+  "channels": [
+    {
+      "name": "DMIT",
+      "channel": "dmitnews",
+      "buy_url": "https://www.dmit.io/pages/lax-eyeball",
+      "keywords": [
+        "补货",
+        "上架",
+        "有货",
+        "缺货",
+        "售罄",
+        "黑五",
+        "双十一",
+        "双11",
+        "INTRO",
+        "WEE",
+        "LAX.EB",
+        "促销",
+        "优惠",
+        "活动"
+      ]
+    },
+    {
+      "name": "VMRack",
+      "channel": "vmrackvps",
+      "buy_url": "https://www.vmrack.net/",
+      "keywords": [
+        "补货",
+        "上架",
+        "有货",
+        "缺货",
+        "售罄",
+        "黑五",
+        "双十一",
+        "双11",
+        "CMIN2",
+        "9929",
+        "L3",
+        "促销",
+        "优惠",
+        "活动"
+      ]
+    },
+    {
+      "name": "VMISS",
+      "channel": "vmiss_com",
+      "buy_url": "https://www.vmiss.com/",
+      "keywords": [
+        "补货",
+        "上架",
+        "有货",
+        "缺货",
+        "售罄",
+        "黑五",
+        "双十一",
+        "双11",
+        "软银",
+        "CMIN2",
+        "IIJ",
+        "促销",
+        "优惠",
+        "活动"
+      ]
+    },
+    {
+      "name": "ZgoCloud",
+      "channel": "zgovps",
+      "buy_url": "https://zgovps.com/",
+      "keywords": [
+        "补货",
+        "上架",
+        "有货",
+        "缺货",
+        "售罄",
+        "黑五",
+        "双十一",
+        "双11",
+        "CMIN2",
+        "9929",
+        "促销",
+        "优惠",
+        "活动"
+      ]
+    },
+    {
+      "name": "CloudIPLC",
+      "channel": "iplcnews",
+      "buy_url": "https://www.cloudiplc.com/cart.php",
+      "keywords": [
+        "补货",
+        "上架",
+        "有货",
+        "缺货",
+        "售罄",
+        "黑五",
+        "双十一",
+        "双11",
+        "CMI",
+        "秒杀",
+        "促销",
+        "优惠",
+        "活动"
+      ]
+    },
+    {
+      "name": "六六云",
+      "channel": "six_clouds",
+      "buy_url": "https://666clouds.com/shop",
+      "keywords": [
+        "补货",
+        "上架",
+        "有货",
+        "缺货",
+        "售罄",
+        "黑五",
+        "双十一",
+        "双11",
+        "软银",
+        "CMIN2",
+        "促销",
+        "优惠",
+        "活动"
+      ]
+    },
+    {
+      "name": "VmShell",
+      "channel": "vmshell",
+      "buy_url": "https://vmshell.com/cart.php",
+      "keywords": [
+        "补货",
+        "上架",
+        "有货",
+        "缺货",
+        "售罄",
+        "黑五",
+        "双十一",
+        "双11",
+        "CMIN2",
+        "促销",
+        "优惠",
+        "活动"
+      ]
+    },
+    {
+      "name": "HostYun",
+      "channel": "hostyun",
+      "buy_url": "https://www.hostyun.com/",
+      "keywords": [
+        "补货",
+        "上架",
+        "有货",
+        "缺货",
+        "售罄",
+        "黑五",
+        "双十一",
+        "双11",
+        "软银",
+        "CMI",
+        "促销",
+        "优惠",
+        "活动"
+      ]
+    },
+    {
+      "name": "ByteVirt",
+      "channel": "bytevirt",
+      "buy_url": "https://bytevirt.com/store/vps-jp-kvm",
+      "keywords": [
+        "补货",
+        "上架",
+        "有货",
+        "缺货",
+        "售罄",
+        "黑五",
+        "双十一",
+        "双11",
+        "Japan",
+        "SoftBank",
+        "促销",
+        "优惠",
+        "活动"
+      ]
+    }
+  ],
+  "heartbeat": {
+    "enabled": true,
+    "hour": 9
+  },
+  "pages": [
+    {
+      "name": "HostYun 官网",
+      "url": "https://www.hostyun.com/",
+      "keywords": [
+        "双十一",
+        "双11",
+        "黑五",
+        "8折",
+        "年付"
+      ],
+      "buy_url": "https://www.hostyun.com/",
+      "alert_text": "官网出现新的促销词"
+    },
+    {
+      "name": "六六云公告",
+      "url": "https://666clouds.com/announcements",
+      "keywords": [
+        "双十一",
+        "双11",
+        "黑五",
+        "年付",
+        "折"
+      ],
+      "buy_url": "https://666clouds.com/shop",
+      "alert_text": "公告出现新的促销词"
+    },
+    {
+      "name": "CloudIPLC 官网",
+      "url": "https://www.cloudiplc.com/",
+      "keywords": [
+        "双十一",
+        "双11",
+        "黑五",
+        "秒杀",
+        "CMIN2"
+      ],
+      "buy_url": "https://www.cloudiplc.com/cart.php",
+      "alert_text": "官网出现新的促销词"
+    }
+  ]
+}
