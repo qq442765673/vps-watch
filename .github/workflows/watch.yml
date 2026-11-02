@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
+    inputs:
+      test:
+        description: "Send a test message"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -27,7 +32,12 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
-        run: python3 watch.py --once
+        run: |
+          if [ "${{ inputs.test }}" = "true" ]; then
+            python3 watch.py --test
+          else
+            python3 watch.py --once
+          fi
       - name: Commit state
         run: |
           if [ -z "$(git status --porcelain state.json)" ]; then

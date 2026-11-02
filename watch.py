@@ -122,6 +122,7 @@ def tg_send(cfg, text, dry=False):
         req = urllib.request.Request(url, data=data, headers={"User-Agent": UA})
         with urllib.request.urlopen(req, timeout=20) as r:
             r.read()
+        log("telegram ok")
     except Exception as e:
         log(f"telegram send failed: {e}")
 
@@ -153,6 +154,8 @@ def pushplus_send(cfg, text, dry=False):
         try:
             if json.loads(resp).get("code") != 200:
                 log(f"pushplus failed: {resp[:200]}")
+            else:
+                log("pushplus ok")
         except Exception:
             log(f"pushplus response: {resp[:200]}")
     except Exception as e:
