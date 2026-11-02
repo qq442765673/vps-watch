@@ -236,5 +236,39 @@
       "buy_url": "https://www.cloudiplc.com/cart.php",
       "alert_text": "官网出现新的促销词"
     }
-  ]
+  ],
+  "filters": {
+    "max_price_usd": 40,
+    "push_if_no_price": true,
+    "exclude_keywords": [
+      "IPLC",
+      "NAT",
+      "独服",
+      "独立服务器",
+      "物理机",
+      "高防",
+      "大硬盘",
+      "大盘",
+      "虚拟主机",
+      "域名",
+      "CDN",
+      "存储"
+    ],
+    "target_keywords": [
+      "CMIN2",
+      "CMI",
+      "软银",
+      "SoftBank",
+      "9929",
+      "CN2",
+      "VPS",
+      "云服务器",
+      "KVM",
+      "补货",
+      "上架",
+      "LAX.EB",
+      "IIJ",
+      "NTT"
+    ]
+  }
 }

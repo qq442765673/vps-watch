@@ -104,6 +104,84 @@ def matches(text, keywords):
     return any(k.lower() in low for k in keywords)
 
 
+CURRENCY_RATE = {
+    "usd": 1.0, "us$": 1.0, "$": 1.0, "美元": 1.0, "美金": 1.0, "刀": 1.0,
+    "cny": 1 / 7.3, "rmb": 1 / 7.3, "¥": 1 / 7.3, "元": 1 / 7.3, "人民币": 1 / 7.3,
+    "eur": 1.08, "€": 1.08, "欧元": 1.08,
+    "cad": 0.73, "c$": 0.73, "加元": 0.73,
+    "gbp": 1.27, "£": 1.27, "英镑": 1.27,
+}
+PERIODS = [
+    ("半年", 2), ("semi-annual", 2), ("semi", 2),
+    ("整年", 1), ("年付", 1), ("每年", 1), ("annually", 1), ("year", 1), ("yr", 1), ("年", 1),
+    ("季付", 4), ("季度", 4), ("quarter", 4), ("qtr", 4), ("季", 4),
+    ("月付", 12), ("每月", 12), ("monthly", 12), ("month", 12), ("mo", 12), ("月", 12),
+]
+PRICE_RE = re.compile(
+    r"(?P<cur>US\$|USD|CNY|RMB|EUR|CAD|GBP|C\$|美元|美金|人民币|欧元|加元|英镑|[$¥€£])\s*(?P<amt>\d+(?:\.\d+)?)"
+    r"|(?P<amt2>\d+(?:\.\d+)?)\s*(?P<cur2>USD|CNY|RMB|EUR|CAD|GBP|美元|美金|人民币|欧元|加元|英镑|元|刀)",
+    re.I,
+)
+
+
+def annual_usd_prices(text, targets):
+    """Approximate annual USD prices; only prices near a target keyword count."""
+    out = []
+    for m in PRICE_RE.finditer(text):
+        cur = (m.group("cur") or m.group("cur2") or "").lower()
+        amt_s = m.group("amt") or m.group("amt2")
+        if not cur or not amt_s:
+            continue
+        amt = float(amt_s)
+        rate = CURRENCY_RATE.get(cur, 1.0)
+
+        if targets:
+            window = text[max(0, m.start() - 180): m.end() + 180].lower()
+            if not any(t.lower() in window for t in targets):
+                continue
+
+        near_start = max(0, m.start() - 24)
+        near = text[near_start: m.end() + 24].lower()
+        period, best_key = None, None
+        for word, mult in PERIODS:
+            idx = near.find(word)
+            while idx != -1:
+                key = (
+                    abs((near_start + idx) - m.start()),
+                    0 if (near_start + idx) <= m.start() else 1,
+                )
+                if best_key is None or key < best_key:
+                    best_key, period = key, mult
+                idx = near.find(word, idx + 1)
+        if period is None:
+            period = 12 if amt < 15 else 1
+        out.append(amt * rate * period)
+    return out
+
+
+def should_push(cfg, ch, text):
+    f = cfg.get("filters", {})
+    low = text.lower()
+
+    for kw in ch.get("exclude_keywords", f.get("exclude_keywords", [])):
+        if kw and kw.lower() in low:
+            return False, f"exclude:{kw}"
+
+    targets = ch.get("target_keywords", f.get("target_keywords", []))
+    if targets and not any(k.lower() in low for k in targets):
+        return False, "no-target"
+
+    max_price = ch.get("max_price_usd", f.get("max_price_usd"))
+    if max_price:
+        prices = annual_usd_prices(text, targets)
+        if prices and min(prices) > float(max_price):
+            return False, f"price:${min(prices):.0f}>${float(max_price):.0f}"
+        if not prices and not f.get("push_if_no_price", True):
+            return False, "no-price"
+
+    return True, ""
+
+
 def tg_send(cfg, text, dry=False):
     token = cfg["telegram"].get("bot_token", "").strip()
     chat = cfg["telegram"].get("chat_id", "").strip()
@@ -224,6 +302,10 @@ def poll(cfg, state, dry=False):
         new = sorted(m for m in msgs if m[0] > last)
         for pid, post, text in new:
             if matches(text, ch.get("keywords", [])):
+                ok, reason = should_push(cfg, ch, text)
+                if not ok:
+                    log(f"skip {ch['name']} {post}: {reason}")
+                    continue
                 alert_channel(cfg, ch, post, text, dry)
                 state["last_alert"] = f"{ch['name']} {post} @ {datetime.now():%m-%d %H:%M}"
         if new:
