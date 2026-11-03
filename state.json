@@ -3,7 +3,7 @@
     "dmitnews": 477,
     "zgovps": 52,
     "iplcnews": 731,
-    "six_clouds": 260,
+    "six_clouds": 261,
     "vmshell": 2242,
     "hostyun": 208,
     "bytevirt": 184,
@@ -24,7 +24,7 @@
       "CMIN2"
     ]
   },
-  "last_heartbeat": "2026-11-02",
+  "last_heartbeat": "2026-11-03",
   "last_alert": "VmShell vmshell/2237 @ 11-02 16:33",
   "tg_status": "正常",
   "tg_down_streak": 0,
