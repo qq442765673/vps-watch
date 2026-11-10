@@ -2,9 +2,9 @@
   "channels": {
     "dmitnews": 478,
     "zgovps": 52,
-    "iplcnews": 732,
-    "six_clouds": 264,
-    "vmshell": 2247,
+    "iplcnews": 734,
+    "six_clouds": 265,
+    "vmshell": 2249,
     "hostyun": 208,
     "bytevirt": 184,
     "vmrackvps": 130,
@@ -16,6 +16,7 @@
       "年付"
     ],
     "六六云公告": [
+      "双11",
       "年付",
       "折"
     ],
@@ -25,7 +26,7 @@
     ]
   },
   "last_heartbeat": "2026-11-10",
-  "last_alert": "VmShell vmshell/2237 @ 11-02 16:33",
+  "last_alert": "六六云公告 @ 11-10 19:51",
   "tg_status": "正常",
   "tg_down_streak": 0,
   "tg_down_alerted": false
