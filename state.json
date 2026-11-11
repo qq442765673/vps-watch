@@ -1,7 +1,7 @@
 {
   "channels": {
     "dmitnews": 479,
-    "zgovps": 52,
+    "zgovps": 53,
     "iplcnews": 734,
     "six_clouds": 265,
     "vmshell": 2249,
@@ -26,7 +26,7 @@
     ]
   },
   "last_heartbeat": "2026-11-11",
-  "last_alert": "六六云公告 @ 11-10 19:51",
+  "last_alert": "ZgoCloud ZGOVPS/53 @ 11-11 21:47",
   "tg_status": "正常",
   "tg_down_streak": 0,
   "tg_down_alerted": false
