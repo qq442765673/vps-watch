@@ -1,6 +1,6 @@
 {
   "channels": {
-    "dmitnews": 479,
+    "dmitnews": 481,
     "zgovps": 53,
     "iplcnews": 736,
     "six_clouds": 266,
@@ -26,7 +26,7 @@
     ]
   },
   "last_heartbeat": "2026-11-14",
-  "last_alert": "ZgoCloud ZGOVPS/53 @ 11-11 21:47",
+  "last_alert": "DMIT dmitnews/481 @ 11-14 18:56",
   "tg_status": "正常",
   "tg_down_streak": 0,
   "tg_down_alerted": false
