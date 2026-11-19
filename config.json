@@ -193,7 +193,7 @@
     }
   ],
   "heartbeat": {
-    "enabled": true,
+    "enabled": false,
     "hour": 9
   },
   "pages": [
