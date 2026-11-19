@@ -19,8 +19,10 @@ CHANNELS = [
     ("ByteVirt", "bytevirt"),
 ]
 PAGES = [
-    ("VMRack activity", "https://www.vmrack.net/zh-CN/activity"),
-    ("DMIT stock", "https://dmitstock.com/"),
+    ("VMRack activity", "https://www.vmrack.net/activity/2026-spring"),
+    ("VMRack deals", "https://www.vmrack.net/zh-CN/deploy-new-instance/vps-activation-deals?id=2052274755"),
+    ("HostYun home", "https://www.hostyun.com/"),
+    ("六六云公告", "https://666clouds.com/announcements"),
 ]
 
 
@@ -61,9 +63,9 @@ def main():
             print(f"\n### {name} ({channel}) ERROR {e}", flush=True)
             continue
         print(f"\n### {name} ({channel}) latest={len(posts)}", flush=True)
-        for post, text in posts[-6:]:
+        for post, text in posts[-8:]:
             one = " ".join(text.split())
-            print(f"[{post}] {one[:220]}", flush=True)
+            print(f"[{post}] {one[:700]}", flush=True)
         time.sleep(1)
 
     for name, url in PAGES:
